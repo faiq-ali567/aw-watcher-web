@@ -27,7 +27,6 @@
     "background": {
         "{{chrome}}.service_worker": "src/background/main.ts",
         "{{edge}}.service_worker": "src/background/main.ts",
-        "{{safari}}.service_worker": "src/background/main.ts",
         "{{firefox}}.scripts": ["src/background/main.ts"]
     },
 
