@@ -111,12 +111,6 @@ export async function sendHeartbeat(
     },
   )
     .then(() => {
-      if (syncStatus.success === false) {
-        emitNotification(
-          'Now connected again',
-          'Connection to ActivityWatch server established again',
-        )
-      }
       setSyncStatus(true)
     })
     .catch((err) => {
