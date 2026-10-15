@@ -2,8 +2,8 @@ import config from '../config'
 
 import { AWClient, IEvent } from 'aw-client'
 import retry from 'p-retry'
-import { emitNotification, getBrowser, logHttpError } from './helpers'
-import { getHostname, getSyncStatus, setSyncStatus, getCloudSyncPolicy, addASHeartbeat } from '../storage'
+import { getBrowser, logHttpError } from './helpers'
+import { getHostname, setSyncStatus, getCloudSyncPolicy, addASHeartbeat } from '../storage'
 
 export const getClient = async () => {
   const cloudSyncEnabled = await getCloudSyncPolicy()
@@ -73,7 +73,6 @@ export async function sendHeartbeat(
   email: string | undefined
 ) {
   const hostname = (await getHostname()) ?? 'unknown'
-  const syncStatus = await getSyncStatus()
   const cloudSyncEnabled = await getCloudSyncPolicy()
   
   // If cloud sync is enabled, store heartbeat data in browser storage instead of sending to server
@@ -114,12 +113,6 @@ export async function sendHeartbeat(
       setSyncStatus(true)
     })
     .catch((err) => {
-      if (syncStatus.success) {
-        emitNotification(
-          'Unable to send event to server',
-          'Please ensure that ActivityWatch is running',
-        )
-      }
       setSyncStatus(false)
       return logHttpError(err)
     })

@@ -27,6 +27,7 @@
     "background": {
         "{{chrome}}.service_worker": "src/background/main.ts",
         "{{edge}}.service_worker": "src/background/main.ts",
+        "{{safari}}.service_worker": "src/background/main.ts",
         "{{firefox}}.scripts": ["src/background/main.ts"]
     },
 
@@ -37,7 +38,6 @@
     "{{firefox}}.permissions": [
         "tabs",
         "alarms",
-        "notifications",
         "activeTab",
         "storage",
         "declarativeNetRequest",
@@ -53,7 +53,6 @@
     "{{chrome}}.permissions": [
         "tabs",
         "alarms",
-        "notifications",
         "activeTab",
         "storage",
         "declarativeNetRequest",
@@ -63,7 +62,6 @@
     "{{edge}}.permissions": [
         "tabs",
         "alarms",
-        "notifications",
         "activeTab",
         "storage",
         "declarativeNetRequest",
@@ -91,7 +89,6 @@
     "{{safari}}.permissions": [
         "tabs",
         "alarms",
-        "notifications",
         "activeTab",
         "storage"
     ],
